@@ -27,29 +27,6 @@ const fonts = [
   "Manrope-Variable",
 ];
 
-export default function Home() {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Daftar Nama Berdasarkan Stambuk</Text>
-
-      <FlatList
-        data={names}
-        keyExtractor={(item) => item.nim}
-        renderItem={({ item, index }) => (
-          <Text style={[styles.itemText, { fontFamily: fonts[index] }]}>
-            {item.name} - {item.nim}
-          </Text>
-        )}
-      />
-
-      <View style={styles.iconRow}>
-        <AntDesign name="sound" size={32} color="red" />
-        <AntDesign name="clockcircleo" size={32} color="black" />
-      </View>
-    </View>
-  );
-}
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -73,3 +50,26 @@ const styles = StyleSheet.create({
     gap: 30,
   },
 });
+
+export default function Home() {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>Daftar Nama Berdasarkan Stambuk</Text>
+
+      <FlatList
+        data={names}
+        keyExtractor={(item) => item.nim}
+        renderItem={({ item, index }) => (
+          <Text style={[styles.itemText, { fontFamily: fonts[index] }]}>
+            {item.name} - {item.nim}
+          </Text>
+        )}
+      />
+
+      <View style={styles.iconRow}>
+        <AntDesign name="sound" size={32} color="red" />
+        <AntDesign name="clockcircleo" size={32} color="black" />
+      </View>
+    </View>
+  );
+}
