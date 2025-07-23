@@ -29,7 +29,7 @@ export default function RootLayout() {
   }, [loaded, error]);
 
   if (!loaded && error == null) {
-    return null; // Jangan render apa pun dulu sampai font siap
+    return null;
   }
 
   return <Stack />;
