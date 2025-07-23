@@ -1,85 +1,75 @@
-import { Text, View } from "react-native";
+import { View, Text, StyleSheet, FlatList } from "react-native";
+import { AntDesign } from "@expo/vector-icons";
 
-export default function Index() {
+const names = [
+  { name: "RADIN", nim: "105841107722" },
+  { name: "YANI", nim: "105841107922" },
+  { name: "ANNAS", nim: "105841109022" },
+  { name: "LEHA", nim: "105841109222" },
+  { name: "DINDA", nim: "105841109322" },
+  { name: "FAREL", nim: "105841109422" },
+  { name: "FAUZAN", nim: "105841109622" },
+  { name: "FADHIL", nim: "105841109722" },
+  { name: "DAYANG", nim: "105841109822" },
+  { name: "SABAN", nim: "10584111022" },
+];
+
+const fonts = [
+  "Lato-Regular",
+  "Lato-Bold",
+  "Roboto-Regular",
+  "Roboto-Bold",
+  "Merriweather-Regular",
+  "Inter-Variable",
+  "Raleway-Variable",
+  "Nunito-Variable",
+  "Mulish-Variable",
+  "Manrope-Variable",
+];
+
+export default function Home() {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "#f0f0f5",
-        padding: 20,
-      }}
-    >
-      {}
-      <View
-        style={{
-          width: 0,
-          height: 0,
-          borderLeftWidth: 60,
-          borderRightWidth: 60,
-          borderBottomWidth: 120,
-          borderLeftColor: "transparent",
-          borderRightColor: "transparent",
-          borderBottomColor: "red",
-          marginBottom: 40,
-        }}
+    <View style={styles.container}>
+      <Text style={styles.title}>Daftar Nama Berdasarkan Stambuk</Text>
+
+      <FlatList
+        data={names}
+        keyExtractor={(item) => item.nim}
+        renderItem={({ item, index }) => (
+          <Text style={[styles.itemText, { fontFamily: fonts[index] }]}>
+            {item.name} - {item.nim}
+          </Text>
+        )}
       />
 
-      {}
-      <View
-        style={{
-          backgroundColor: "gray",
-          paddingVertical: 25,
-          paddingHorizontal: 60,
-          borderRadius: 5,
-          marginBottom: 40,
-          elevation: 5,
-          shadowColor: "#000",
-          shadowOffset: { width: 0, height: 4 },
-          shadowOpacity: 0.3,
-          shadowRadius: 4,
-        }}
-      >
-        <Text
-          style={{
-            fontSize: 24,
-            fontWeight: "bold",
-            color: "white",
-            letterSpacing: 1,
-          }}
-        >
-          MUH.FADHIL AHMAD
-        </Text>
-      </View>
-
-      {}
-      <View
-        style={{
-          backgroundColor: "#3A4750",
-          width: 260,
-          height: 70,
-          borderRadius: 35,
-          justifyContent: "center",
-          alignItems: "center",
-          elevation: 5,
-          shadowColor: "#000",
-          shadowOffset: { width: 0, height: 4 },
-          shadowOpacity: 0.3,
-          shadowRadius: 4,
-        }}
-      >
-        <Text
-          style={{
-            fontSize: 26,
-            fontWeight: "bold",
-            color: "#FFFFFF",
-            letterSpacing: 1,
-          }}
-        >
-          105841109722
-        </Text>
+      <View style={styles.iconRow}>
+        <AntDesign name="sound" size={32} color="red" />
+        <AntDesign name="clockcircleo" size={32} color="black" />
       </View>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#f3f3f3",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 20,
+  },
+  title: {
+    fontSize: 20,
+    marginBottom: 20,
+    fontFamily: "Lato-Bold",
+  },
+  itemText: {
+    fontSize: 18,
+    marginVertical: 4,
+  },
+  iconRow: {
+    flexDirection: "row",
+    marginTop: 40,
+    gap: 30,
+  },
+});
